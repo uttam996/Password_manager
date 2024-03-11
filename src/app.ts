@@ -9,6 +9,8 @@ dotenv.config();
 
 
 
+console.log(process.env.MONGO_URL);
+
 import PasswordRouter from './routes/password.routes';
 
 
