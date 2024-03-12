@@ -2,16 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 
-dotenv.config();
-
-
-
-
-console.log(process.env.MONGO_URL);
 
 import PasswordRouter from './routes/password.routes';
+import { MONGO_URL, PORT } from './constant';
+import Password from './model/password.model';
+import { Encrypt } from './utlits';
 
 
 
@@ -35,10 +31,12 @@ app.use("/password",
 
 
 
+
 app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${process.env.PORT }`);
+  return console.log(`Express is listening at http://localhost:${PORT }`);
 });
 
-mongoose.connect(process.env.MONGO_URL).then(() => {
-  console.log('Connected to MongoDB');
+mongoose.connect(MONGO_URL).then(() => {
+  console.log('Connected to MongoDB ' + MONGO_URL);
 });
+

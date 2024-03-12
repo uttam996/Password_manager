@@ -20,6 +20,16 @@ const passwordSchema = new Schema(
       type: String,
       required: true,
     },
+    deleted: {
+      type: Boolean,
+      default: false,
+    
+    },
+    copyCount: {
+      type: Number,
+      default: 0,
+    
+    },
   },
   {
     timestamps: true,

@@ -7,10 +7,8 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
-console.log(process.env.MONGO_URL);
 const password_routes_1 = __importDefault(require("./routes/password.routes"));
+const constant_1 = require("./constant");
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
@@ -22,9 +20,9 @@ app.use("/password", (res, req, next) => {
     }, 1000);
 }, password_routes_1.default);
 app.listen(port, () => {
-    return console.log(`Express is listening at http://localhost:${process.env.PORT}`);
+    return console.log(`Express is listening at http://localhost:${constant_1.PORT}`);
 });
-mongoose_1.default.connect(process.env.MONGO_URL).then(() => {
-    console.log('Connected to MongoDB');
+mongoose_1.default.connect(constant_1.MONGO_URL).then(() => {
+    console.log('Connected to MongoDB ' + constant_1.MONGO_URL);
 });
 //# sourceMappingURL=app.js.map
